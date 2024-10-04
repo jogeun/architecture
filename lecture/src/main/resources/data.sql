@@ -4,6 +4,8 @@ INSERT INTO Member (name) VALUES ('test3');
 INSERT INTO Member (name) VALUES ('test4');
 INSERT INTO Member (name) VALUES ('test5');
 INSERT INTO Member (name) VALUES ('test6');
-INSERT INTO Lecture (name,max_people) VALUES ('MATH',2);
-INSERT INTO Lecture (name,max_people) VALUES ('COMPUTER',3);
-INSERT INTO Lecture (name,max_people) VALUES ('SCIENCE',1);
+INSERT INTO Lecture (title,lecturer) VALUES ('MATH','KIM');
+INSERT INTO Lecture (title,lecturer) VALUES ('COMPUTER','LEE');
+INSERT INTO Lecture (title,lecturer) VALUES ('SCIENCE','PARK');
+
+COMMIT;
