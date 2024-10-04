@@ -41,15 +41,17 @@ public class EnrollLectureFacade {
         // 강의 중복신청 여부 확인
         Optional<Enrollment> enrollment = enrollService.getFindSameEnroll(member.getId(), lecture.getId());
 
-        Enrollment saveEnroll = null;
-
         if (enrollment.isPresent()) {
             throw new CustomException(ErrorCode.LECTURE_ALREADY_APPLIED);
         } else {
-            //잔여석 -1 제거
-            lecture.reduceCapacity();
-            //등록목록 저장
-             enrollService.saveEnroll(member, lecture);
+            if(lecture.getCapacity()> 0) {
+                //잔여석 -1 제거
+                lecture.reduceCapacity();
+                //등록목록 저장
+                enrollService.saveEnroll(member, lecture);
+            }else{
+                throw new CustomException(ErrorCode.LECTURE_NOT_ENOUGH);
+            }
 
         }
 
